@@ -1,0 +1,173 @@
+/* #services .services__group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+} */
+
+#experience .service {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius-3);
+    color: var(--color-text);
+    padding: 40px 25px;
+    isolation: isolate;
+    cursor: pointer;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+#experience .service::before,
+#experience .service::after {
+    content: "";
+    position: absolute;
+}
+
+#experience .service::before {
+    width: 200%;
+    height: 200%;
+    background-image: conic-gradient(
+        var(--color-primary),
+        transparent 60deg,
+        transparent 180deg,
+        var(--color-primary),
+        transparent 240deg
+    );
+    inset: -50%;
+    z-index: -2;
+    animation: spin 9s linear infinite;
+    animation-play-state: paused;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+#experience .service:hover::before {
+    animation-play-state: running;
+}
+
+#experience .service::after {
+    background: var(--color-ui-2);
+    inset: 0.25rem;
+    border-radius: calc(1.2rem - 0.25rem);
+    z-index: -1;
+    transition: var(--transition);
+}
+
+#experience .service .service__top {
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#experience .icon__container {
+    width: 80px;
+    background: var(--color-ui-2);
+    border: solid 1px var(--color-primary);
+    margin-right: 8px;
+}
+
+#experience .service .icon {
+    font-size: 40px;
+    color: var(--color-primary);
+}
+
+#experience .service .title {
+    font-size: 25px;
+    background: linear-gradient(to right, var(--color-primary) 0%, var(--color-white) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#experience .service .description {
+    text-align: justify;
+    font-size: 16px;
+    line-height: 25px;
+    transition: var(--transition);
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#experience .service:hover .description {
+    color: var(--color-text);
+}
+
+.service__middle {
+    overflow: hidden;
+    transition: max-height 1s ease-out;
+    max-height: 100px; 
+}
+  
+.service__middle.expanded {
+    max-height: 300px; 
+}
+
+#experience .service .service__bottom {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#experience .service .btn.btn__primary {
+    background: linear-gradient(260deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+    background-size: 200% auto;
+}
+
+#experience .service .btn.btn__primary:hover {
+    background-position: right center !important;
+}
+
+.experience__position {
+    display: flex;
+    position: absolute;
+    top: 35px;
+    left: 90px;
+}
+
+@media (max-width: 1000px) {
+    #experience .services__group {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    #experience .service__top {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #experience .service {
+        width: 80vw;
+    }
+
+    .experience__position {
+        position: relative;
+        top: 0;
+        left: 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    #experience .service {
+        padding: 20px;
+    }
+
+    #experience .icon__container {
+        width: 60px;
+    }
+
+    #experience .service .title {
+        font-size: 20px;
+    }
+
+    #experience .service .description {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
